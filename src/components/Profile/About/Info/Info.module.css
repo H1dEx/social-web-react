@@ -1,0 +1,20 @@
+.wraper {
+    margin-top: 15px;
+    display: flex;
+    font-size: 20px;
+}
+
+.avatar img{
+    width: 150px;
+    height: 150px;
+}
+
+.info {
+    display: block;
+    margin-left: 40px;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 26px;
+}

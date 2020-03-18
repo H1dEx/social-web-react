@@ -1,0 +1,14 @@
+.sidebar {
+	width: 13%;
+	padding: 0;
+}
+
+.sidebar li{
+	padding: 0 0 10px;
+	font-size: 18px;
+}
+
+.sidebar li a{
+	text-decoration: none;
+	color: #1d1d34;
+}

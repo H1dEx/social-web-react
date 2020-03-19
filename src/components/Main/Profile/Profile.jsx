@@ -5,7 +5,7 @@ import About from './About/About';
 
 const Profile = () => {
     return (
-        <section className='content'>
+        <section>
             <About />
             <MyPosts />
 	</section>

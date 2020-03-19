@@ -1,0 +1,35 @@
+.wrapper {
+    padding: 20px;
+}
+
+.header {
+    font-size: 26px;
+}
+
+.contentWrapper {
+    margin-top: 40px;
+    display: flex;
+}
+
+.dialogsList {
+    display: flex;
+    flex-direction: column;
+    padding-right: 80px;
+    margin-right: 60px;
+    border-right: 2px solid #000000;
+}
+
+.dialogsItem {
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: #000000;
+}
+
+.messagesItem {
+    margin-bottom: 20px;
+    
+}
+
+.active {
+    font-weight: bold;
+}

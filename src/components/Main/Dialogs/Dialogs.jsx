@@ -7,10 +7,14 @@ const Dialogs = (props) => {
 
     let dialogsElements = props.messagesPage.dialogsData.map( dialog => <DialogItem name={dialog.name} id={dialog.id} />),
         messagesElements = props.messagesPage.messagesData.map( m => <Message message={m.message} />),
-        newMessage = React.createRef(),
+        message = React.createRef(),
         sendMessage = () => {
-            return sendMessage.current.value;
+            props.sendMessage(message.current.value);
+        },
+        messageChange = () => {
+            props.updateMessageValue(message.current.value);
         }
+
 
     return (
     <div className={styles.wrapper}>
@@ -21,7 +25,7 @@ const Dialogs = (props) => {
             </div>
             <div className={styles.messagesList}>
                 {messagesElements}
-        <textarea name="messageArea" placeholder="Type your message" className={styles.textField} ref={newMessage} ></textarea>
+        <textarea name="messageArea" placeholder="Type your message" className={styles.textField} ref={message} value={props.messagesPage.messageValue} onChange={messageChange} ></textarea>
         <button className={styles.btn} onClick={sendMessage}>Send</button>
             </div>
 

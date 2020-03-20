@@ -15,11 +15,11 @@ return (
     <div className={styles.wrapper}>
         <Navbar />
         <div className={styles.content}>
-            <Route path="/dialogs" component={() => <Dialogs messagesPage={props.state.messagesPage} />} />
-            <Route path="/profile" component={()=> <Profile profilePage={props.state.profilePage} addPost={props.addPost} />} />
-            <Route path="/news" component={News} />
-            <Route path="/music" component={Music} />
-            <Route path="/settings" component={Settings} />
+            <Route path="/dialogs" render={() => <Dialogs messagesPage={props.state.messagesPage} sendMessage={props.sendMessage} updateMessageValue={props.updateMessageValue} />} />
+            <Route path="/profile" render={()=> <Profile profilePage={props.state.profilePage} addPost={props.addPost} updatePostValue={props.updatePostValue} />} />
+            <Route path="/news" render={News} />
+            <Route path="/music" render={Music} />
+            <Route path="/settings" render={Settings} />
         </div>
 
     </div>

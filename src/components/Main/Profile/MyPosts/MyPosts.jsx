@@ -5,18 +5,21 @@ import Post from './Post/Post';
 
 const MyPosts = (props) => {
 
-    let posts = props.postsData.map(p => <Post message={p.message} currentLikes={p.likesCount} />),
-    
-    addPost = () => {
-        props.addPost(address.current.value);
-    },
-    address = React.createRef();
+    let posts = props.profilePage.postsData.map(p => <Post message={p.message} currentLikes={p.likesCount} />),
+        address = React.createRef(),        
+        textChange = () => {
+            let text = address.current.value;
+            props.updatePostValue(text);
+        },
+        addPost = () => {
+            props.addPost(address.current.value);
+        };
 
 return (
 <div className={styles.wrapper}>
     <div className={styles.header}>My posts</div>
     <div className={styles.place}>
-        <textarea placeholder='your news...' className={styles.field} ref={address}></textarea>
+        <textarea placeholder='your news...' className={styles.field} ref={address}  value={props.profilePage.postValue} onChange={textChange} />
         <button className={styles.btn} onClick={addPost} >Send</button>
     </div>
     <div className={styles.posts}>

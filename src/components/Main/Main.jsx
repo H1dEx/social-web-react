@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import styles from './Main.module.css';
 import Navbar from './Navbar/Navbar';
 import Profile from './Profile/Profile';
@@ -9,7 +9,7 @@ import Settings from './Settings/Settings';
 import Music from './Music/Music';
 
 const Main = (props) => {
-return (
+    return (
 <section className="container">
     <div className={styles.wrapper}>
         <Navbar />

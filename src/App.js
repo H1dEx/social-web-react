@@ -6,7 +6,7 @@ import Main from './components/Main/Main';
 const App = (props) => {
 return ( <div>
 	<Header />
-	<Main state={props.state} addPost={props.addPost} sendMessage={props.sendMessage} updatePostValue={props.updatePostValue} updateMessageValue={props.updateMessageValue} />
+	<Main state={props.state} dispatch={props.dispatch} />
 </div>
 
 );

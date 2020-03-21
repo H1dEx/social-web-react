@@ -9,8 +9,7 @@ import Settings from './Settings/Settings';
 import Music from './Music/Music';
 
 const Main = (props) => {
-
-return ( 
+return (
 <section className="container">
     <div className={styles.wrapper}>
         <Navbar />

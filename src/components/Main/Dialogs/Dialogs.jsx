@@ -4,7 +4,6 @@ import Message from './Message/Message';
 import DialogItem from './DialogItem/DialogItem';
 
 const Dialogs = (props) => {
-
     let dialogsElements = props.messagesPage.dialogsData.map( dialog => <DialogItem name={dialog.name} id={dialog.id} />),
         messagesElements = props.messagesPage.messagesData.map( m => <Message message={m.message} />),
         message = React.createRef(),

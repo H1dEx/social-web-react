@@ -6,7 +6,7 @@ import Main from './components/Main/Main';
 const App = (props) => {
 return ( <div>
 	<Header />
-	<Main store={props.store} />
+	<Main />
 </div>
 
 );

@@ -43,22 +43,19 @@ let initialState = {postsData: [
 const profileReducer = (state = initialState, action) => {
     switch(action.type) {
         case UPDATE_POST_VALUE:
-            state.postValue = action.postValue;
-            break;
+
+            return {...state, postValue : action.postValue};
         case ADD_POST:
             let newPost = {
                 id: 8,
                 message: action.postContent,
                 likesCount: 0
             };
-            state.postsData.push(newPost);
-            state.postValue = '';
-            break;
+            return {...state, postsData: [...state.postsData, newPost], postValue: ''};
         default:
             return state;
 
     }
-    return state;
 };
 
 export default profileReducer;

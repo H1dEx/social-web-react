@@ -12,7 +12,6 @@ const MyPosts = (props) => {
         addPost = () => {
             props.addPost(address.current.value);
         };
-    console.log(props);
 return (
 <div className={styles.wrapper}>
     <div className={styles.header}>My posts</div>

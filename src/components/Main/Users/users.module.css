@@ -1,0 +1,79 @@
+.main {
+    padding: 10px;
+}
+
+.title {
+    margin-bottom: 30px;
+}
+
+.user_container {
+    height: 100px;
+    margin-left: 30px;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.image {
+    margin-bottom: 10px;
+    width: 100px;
+    height: 60px;
+    border-radius: 20%;
+}
+
+.btn {
+    display: block;
+    border: 1px solid #1d1d34;
+    color: #1d1d34;
+    width: 100px;
+    border-radius: 5px;
+}
+
+.user_wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    border: 1px solid rgb(169, 169, 169);
+    border-radius: 10px;
+    padding: 10px 10px 5px;
+}
+
+.user_info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user_about {
+    font-size: 18px;
+    color: #313132;
+
+}
+
+.user_address {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.user_address div{
+    font-weight: bold;
+    color: rgb(109, 109, 109);
+    font-size: 18px;
+}
+
+.user_country {
+    margin-bottom: 5px;
+}
+
+.user_name {
+    font-weight: bold;
+    font-size: 23px;
+    color: #313132;
+}
+
+.logo_wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    align-items: center;
+}

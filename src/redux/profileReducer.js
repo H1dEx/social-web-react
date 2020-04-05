@@ -1,7 +1,10 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_POST_VALUE = "UPDATE-POST-VALUE";
+const SET_PROFILE = 'SET_PROFILE';
 
-let initialState = {postsData: [
+let initialState = {
+    profile: null,
+    postsData: [
     {
         id: 1,
         message: "It`s my first post",
@@ -52,6 +55,8 @@ const profileReducer = (state = initialState, action) => {
                 likesCount: 0
             };
             return {...state, postsData: [...state.postsData, newPost], postValue: ''};
+        case SET_PROFILE:
+            return {...state, profile: action.profile};
         default:
             return state;
 
@@ -67,4 +72,8 @@ export const addPostActionCreator = content => ({
 export const updatePostValueActionCreator = value => ({
     type: UPDATE_POST_VALUE,
     postValue: value
+});
+export const setProfile = profile => ({
+    type: SET_PROFILE,
+    profile
 });

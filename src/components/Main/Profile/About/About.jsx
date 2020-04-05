@@ -2,11 +2,11 @@ import React from 'react';
 import Substrate from './Substrate/Substrate';
 import Info from './Info/Info';
 
-const About = () => {
+const About = (props) => {
     return (
         <div>
             <Substrate/>
-            <Info/>
+            <Info profile={props.profile}/>
         </div>
     )
 };

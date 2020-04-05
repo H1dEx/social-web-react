@@ -1,14 +1,14 @@
-import React from 'react';
-import styles from './Profile.module.css';
-import About from './About/About';
+import About from "./About/About";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import React from "react";
 
 const Profile = (props) => {
     return (
         <section>
-            <About />
+            <About profile={props.profile}/>
             <MyPostsContainer/>
-	</section>
+        </section>
     )
-}
-export default Profile
+};
+
+export default Profile;

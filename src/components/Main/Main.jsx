@@ -2,7 +2,7 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 import styles from './Main.module.css';
 import Navbar from './Navbar/Navbar';
-import Profile from './Profile/Profile';
+import ProfileContainer from './Profile/ProfileContainer';
 import News from './News/News';
 import Settings from './Settings/Settings';
 import Music from './Music/Music';
@@ -16,7 +16,7 @@ const Main = (props) => {
                 <Navbar/>
                 <div className={styles.content}>
                     <Route path="/dialogs" render={() => <DialogsContainer/>}/>
-                    <Route path="/profile" render={() => <Profile/>}/>
+                    <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
                     <Route path="/news" render={News}/>
                     <Route path="/music" render={Music}/>
                     <Route path="/settings" render={Settings}/>

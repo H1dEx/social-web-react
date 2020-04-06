@@ -4,27 +4,38 @@ import userPng from "../../../assets/cat.jpg";
 import {NavLink} from "react-router-dom";
 
 let Users = (props) => {
-    let pagesCount = Math.ceil(props.totalUsersCount/props.pageSize);
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
 
-    for (let i = 1; i<=pagesCount; i++) {pages.push(i)}
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i)
+    }
     return (
         <div className={style.main}>
-            <div>{pages.map(el=><span
+            <div>{pages.map(el => <span
                 className={props.currentPage === el && style.active}
-                onClick={()=>{props.onPageChange(el)}}
+                onClick={() => {
+                    props.onPageChange(el)
+                }}
             >{el}</span>)}</div>
             <h2 className={style.title}>Users</h2>
             {
-                    props.users.map(el => <div key={el.id} className={style.user_container}>
+                props.users.map(el => <div key={el.id} className={style.user_container}>
                     <div className={style.logo_wrapper}>
-                        <NavLink to={'/profile/'+el.id}> <img className={style.image} src={(el.photos.small != null) ? el.photos.small : userPng}
-                                       alt='logo'/></NavLink>
+                        <NavLink to={'/profile/' + el.id}> <img className={style.image}
+                                                                src={(el.photos.small != null) ? el.photos.small : userPng}
+                                                                alt='logo'/></NavLink>
                         {(el.followed) ?
                             <button className={style.btn}
-                                    onClick={() => props.unfollow(el.id)}>Unfollow</button>
+                                    onClick={() => {
+                                        props.axios('')
+                                        props.unfollow(el.id);
+                                    }}>Unfollow</button>
                             : <button className={style.btn}
-                                      onClick={() => props.follow(el.id)}>Follow</button>}
+                                      onClick={() => {
+
+                                          props.follow(el.id)
+                                      }}>Follow</button>}
                     </div>
                     <div className={style.user_wrapper}>
                         <div className={style.user_info}>

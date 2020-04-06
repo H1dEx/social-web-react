@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
 import Main from './components/Main/Main';
 
 const App = (props) => {
 return ( <div>
-	<Header />
+	<HeaderContainer />
 	<Main />
 </div>
 

@@ -3,7 +3,6 @@ import {NavLink} from "react-router-dom";
 import React from "react";
 
 const Header = (props) => {
-    debugger;
     return (
         <header className={styles.header}>
             <div className='container'>

@@ -26,17 +26,14 @@ let Users = (props) => {
                                                                 src={(el.photos.small != null) ? el.photos.small : userPng}
                                                                 alt='logo'/></NavLink>
                         {(el.followed) ?
-                            <button className={style.btn}
-                                    onClick={() => {
-                                        props.axios('')
-                                        props.unfollow(el.id);
-                                    }}>Unfollow</button>
-                            : <button className={style.btn}
-                                      onClick={() => {
+                            <button className={style.btn} disabled={props.followingInProgress.some(id => id === el.id)}
+                                    onClick={() => props.unfollow(el.id)}>Unfollow</button>
 
-                                          props.follow(el.id)
-                                      }}>Follow</button>}
+                            :
+                            <button className={style.btn} disabled={props.followingInProgress.some(id => id === el.id)}
+                                    onClick={() => props.follow(el.id)}>Follow</button>}
                     </div>
+
                     <div className={style.user_wrapper}>
                         <div className={style.user_info}>
                             <div className={style.user_name}>{el.name}</div>

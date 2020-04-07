@@ -1,30 +1,18 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {follow, setCurrentPage, setTotalCount, setUsers, toggleIsFetching, unfollow} from "../../../redux/usersReducer";
-import * as axios from "axios";
+import {follow, getUsers, setCurrentPage, unfollow} from "../../../redux/usersReducer";
 import Users from "./Users";
 import Preloader from "../../common/Preloader/Preloader";
 
 class UsersContainer extends Component {
     componentDidMount() {
-        this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`)
-            .then(response => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(response.data.items);
-                this.props.setTotalCount(response.data.totalCount);
-            });
-    }
+        this.props.getUsers(this.props.pageSize, this.props.currentPage);
+    };
 
     onPageChange = (p) => {
         this.props.setCurrentPage(p);
-        this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${p}`)
-            .then(response => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(response.data.items)
-            });
-    }
+        this.props.getUsers(this.props.pageSize, p);
+    };
 
     render() {
 
@@ -37,6 +25,7 @@ class UsersContainer extends Component {
                        onPageChange={this.onPageChange}
                        follow={this.props.follow}
                        unfollow={this.props.unfollow}
+                       followingInProgress={this.props.followingInProgress}
                 />
             </>)
     }
@@ -49,7 +38,8 @@ let mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress
     }
 };
 
@@ -57,10 +47,8 @@ let mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
     follow,
     unfollow,
-    setUsers,
     setCurrentPage,
-    setTotalCount,
-    toggleIsFetching
+    getUsers,
 })(UsersContainer);
 
 

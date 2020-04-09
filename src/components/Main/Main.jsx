@@ -8,6 +8,7 @@ import Settings from './Settings/Settings';
 import Music from './Music/Music';
 import DialogsContainer from "./Dialogs/DialogsContainer";
 import UsersContainer from "./Users/UsersContainer";
+import Login from "./Login/Login";
 
 const Main = (props) => {
     return (
@@ -21,6 +22,7 @@ const Main = (props) => {
                     <Route path="/music" render={Music}/>
                     <Route path="/settings" render={Settings}/>
                     <Route path="/users" render={()=><UsersContainer/>}/>
+                    <Route path="/login" render={()=><Login/>}/>
                 </div>
 
             </div>

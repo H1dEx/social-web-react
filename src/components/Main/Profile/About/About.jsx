@@ -6,7 +6,7 @@ const About = (props) => {
     return (
         <div>
             <Substrate/>
-            <Info profile={props.profile}/>
+            <Info profile={props.profile} />
         </div>
     )
 };

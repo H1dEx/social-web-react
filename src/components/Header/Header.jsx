@@ -13,12 +13,12 @@ const Header = (props) => {
                         </div>
                         <div className={styles.logo_descr}>My social net</div>
                     </div>
-                    <div >
-                       {
-                           (props.isAuth)
-                        ? <NavLink to="/profile" className={styles.login_block}>{props.login}</NavLink>
-                        : <NavLink to="/login" className={styles.signin_block}>Log in</NavLink>
-                       }
+                    <div>
+                        {
+                            (props.isAuth)
+                                ? <NavLink to="/profile" className={styles.login_block}>{props.login}</NavLink>
+                                : <NavLink to="/login" className={styles.signin_block}>Log in</NavLink>
+                        }
 
                     </div>
                 </div>

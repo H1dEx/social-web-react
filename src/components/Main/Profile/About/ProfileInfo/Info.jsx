@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Info.module.css';
 import Preloader from "../../../../common/Preloader/Preloader";
+import ProfileStatus from'./ProfileStatus'
 
-
-const Info = (props) => {
+const ProfileInfo = (props) => {
     if (!props.profile) return (<Preloader/>);
     let profile = props.profile;
 
@@ -37,12 +37,15 @@ const Info = (props) => {
                 </ul>
 
                 <hr/>
-                <div>Looking for a job? - {(profile.lookingForAJob) ? "Yes" : 'No'}</div>
+                <div>
+
+                    Looking for a job? - {(profile.lookingForAJob) ? "Yes" : 'No'}</div>
 
                 {isNull(profile.lookingForAJobDescription, `Looking for a job description: `)}
             </div>
+            <ProfileStatus status={'Oleoleole russia forward'}/>
         </div>
     )
 };
 
-export default Info;
+export default ProfileInfo;

@@ -1,6 +1,6 @@
 import React from 'react';
 import Substrate from './Substrate/Substrate';
-import Info from './Info/Info';
+import Info from './ProfileInfo/Info';
 
 const About = (props) => {
     return (

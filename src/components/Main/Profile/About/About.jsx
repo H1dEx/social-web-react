@@ -1,12 +1,12 @@
 import React from 'react';
 import Substrate from './Substrate/Substrate';
-import Info from './ProfileInfo/Info';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const About = (props) => {
     return (
         <div>
             <Substrate/>
-            <Info profile={props.profile} />
+            <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
         </div>
     )
 };

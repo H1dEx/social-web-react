@@ -43,7 +43,7 @@ const ProfileInfo = (props) => {
 
                 {isNull(profile.lookingForAJobDescription, `Looking for a job description: `)}
             </div>
-            <ProfileStatus status={'Oleoleole russia forward'}/>
+            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
         </div>
     )
 };

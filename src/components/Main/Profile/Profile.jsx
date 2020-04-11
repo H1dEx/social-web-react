@@ -5,7 +5,7 @@ import React from "react";
 const Profile = (props) => {
     return (
         <section>
-            <About profile={props.profile}/>
+            <About profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
             <MyPostsContainer/>
         </section>
     )

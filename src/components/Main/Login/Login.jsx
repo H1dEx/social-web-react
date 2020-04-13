@@ -1,9 +1,10 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
+import {authAPI} from "../../../api/api";
 
 const Login = (props) => {
     const onSubmit = (data)=>{
-        console.log(data);
+        authAPI.login(data)
     }
     return (
         <div>

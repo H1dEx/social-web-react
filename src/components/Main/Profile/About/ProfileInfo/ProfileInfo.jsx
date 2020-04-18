@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Info.module.css';
 import Preloader from "../../../../common/Preloader/Preloader";
 import ProfileStatus from'./ProfileStatus'
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
     if (!props.profile) return (<Preloader/>);
@@ -43,7 +44,7 @@ const ProfileInfo = (props) => {
 
                 {isNull(profile.lookingForAJobDescription, `Looking for a job description: `)}
             </div>
-            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+            <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
         </div>
     )
 };

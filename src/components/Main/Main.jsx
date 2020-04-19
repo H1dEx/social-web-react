@@ -37,7 +37,6 @@ class Main extends React.Component {
                         <Route path="/users" render={() => <UsersContainer/>}/>
                         <Route path="/login" render={() => <Login/>}/>
                     </div>
-
                 </div>
             </section>
         );

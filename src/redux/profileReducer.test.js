@@ -1,7 +1,6 @@
 import profileReducer, {addPost, deletePost} from "./profileReducer";
 
-let state = {
-    profile: null,
+let initialState = {
     postsData: [
         {
             id: 1,
@@ -18,37 +17,46 @@ let state = {
             message: "Yo",
             likesCount: 22
         },
+        {
+            id: 4,
+            message: "Yo",
+            likesCount: 312
+        },
+        {
+            id: 5,
+            message: "Another Yo",
+            likesCount: 111
+        },
+        {
+            id: 6,
+            message: "Wut???",
+            likesCount: 41
+        },
+        {
+            id: 7,
+            message: "Rigth, one more Yo",
+            likesCount: 71
+        }
     ],
-    status: ''
-};
+    postValue: ""
+}
+it('length should be incremented', () => {
+    let action = addPost('something new content');
 
-it('new post should be added ', () => {
-    //1.Test data
-    let action = addPost('My first test LMAO!');
-    //action
-    let newState = profileReducer(state, action);
-    //expectation
-    expect(newState.postsData.length).toBe(4);
-});
-it('new post should be My first test LMAO! ', () => {
-    //1.Test data
-    let action = addPost('My first test LMAO!');
-    //action
-    let newState = profileReducer(state, action);
-    //expectation
-    expect(newState.postsData[3].message).toBe('My first test LMAO!')
-});
-
-it('after deleting length of array should be decrement', () => {
-    let action = deletePost(1);
-    let newState = profileReducer(state, action);
-
-    expect(newState.postsData.length).toBe(state.postsData.length - 1)
+    let newState = profileReducer(initialState, action);
+    expect(newState.postsData.length).toBe(8);
 })
 
-it('after getting wrong id length of array shouldn`t be decrement', () => {
-    let action = deletePost('pepega');
-    let newState = profileReducer(state, action);
+it('length should be decremented', () => {
+    let action = deletePost(initialState.postsData[initialState.postsData.length - 1].id);
 
-    expect(newState.postsData.length).toBe(state.postsData.length)
+    let newState = profileReducer(initialState, action);
+    expect(newState.postsData.length).toBe(6);
+})
+
+it('message should be "something new content"', () => {
+    let action = addPost('something new content');
+
+    let newState = profileReducer(initialState, action);
+    expect(newState.postsData[7].message).toBe('something new content');
 })

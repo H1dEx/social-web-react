@@ -8,8 +8,9 @@ import {maxLengthCreator, required} from "../../../helpers/validators/validators
 
 const Dialogs = props => {
     let dialogsElements = props.messagesPage.dialogsData.map(dialog => (
-            <DialogItem name={dialog.name} id={dialog.id}/>)),
-        messagesElements = props.messagesPage.messagesData.map(m => (<Message message={m.message}/>)),
+            <DialogItem name={dialog.name} id={dialog.id} key={dialog.id}/>)),
+        messagesElements = props.messagesPage.messagesData.map(m => (
+            <Message message={m.message} key={Math.random().toFixed(2) + m.length}/>)),
         addNewMessage = (data) => {
             props.sendMessage(data.newMessageBody);
         };
@@ -32,7 +33,8 @@ const maxLength = maxLengthCreator(50);
 const AddMessageForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field component={Textarea} name="newMessageBody" placeholder="Enter your message" validate={[required, maxLength ]}
+            <Field component={Textarea} name="newMessageBody" placeholder="Enter your message"
+                   validate={[required, maxLength]}
                    className={styles.textField}/>
             <button className={styles.btn}> Send</button>
         </form>

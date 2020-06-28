@@ -6,7 +6,7 @@ import {maxLengthCreator, required} from "../../../../helpers/validators/validat
 import {Textarea} from "../../../common/FormControls/FormControls";
 
 const MyPosts = React.memo(props => {
-    let posts = props.profilePage.postsData.map(p => <Post message={p.message} currentLikes={p.likesCount}/>),
+    let posts = props.profilePage.postsData.map(p => <Post message={p.message} currentLikes={p.likesCount} key={p.id}/>),
         addPost = (data) => {
             props.addPost(data.newPostContent);
         };

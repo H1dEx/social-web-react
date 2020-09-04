@@ -50,7 +50,7 @@ let initialState = {
         },
         {
             id: 5,
-            message: "Nigga"
+            message: "MAN"
         },
         {
             id: 6,

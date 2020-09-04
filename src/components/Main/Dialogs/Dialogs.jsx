@@ -11,7 +11,7 @@ const Dialogs = props => {
             <DialogItem name={dialog.name} id={dialog.id} key={dialog.id}/>)),
         messagesElements = props.messagesPage.messagesData.map(m => (
             <Message message={m.message} key={Math.random().toFixed(2) + m.length}/>)),
-        addNewMessage = (data) => {
+        addNewMessage = (data) =>  {
             props.sendMessage(data.newMessageBody);
         };
     return (

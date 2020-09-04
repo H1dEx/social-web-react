@@ -6,7 +6,7 @@ const Post = (props) => {
         <div className={styles.wrapper}>
             <div className={styles.item}>
                 <div className={styles.image}>
-                    <img src={require('../../About/ProfileInfo/cat.jpg')} alt="ce_content"/>
+                    <img src={require('../../About/cat.jpg')} alt="ce_content"/>
                 </div>
                 <div className={styles.content}>{props.message}</div>
             </div>

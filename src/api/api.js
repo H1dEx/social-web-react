@@ -21,7 +21,7 @@ export const followAPI = {
         return instance.post(`follow/${id}`, {})
             .then(response => response.data);
     },
-
+    
     unfollow(id) {
         return instance.delete(`follow/${id}`)
             .then(response => response.data);
@@ -39,7 +39,7 @@ export const authAPI = {
         return instance.post('auth/login', {
             email, password, rememberMe
         }).then(response => response.data)
-
+        
     },
     logout() {
         return instance.delete('auth/login').then(response => response.data)
@@ -60,5 +60,16 @@ export const profileAPI = {
             .then(response => {
                 return response.data
             });
+    },
+    savePhoto(photo) {
+        const formData = new FormData();
+        formData.append('Image', photo)
+        return instance.put('profile/photo', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then(result => {
+            return result.data
+        })
     }
 };

@@ -122,5 +122,5 @@ export const clearProfile = () => ({type: CLEAR_PROFILE});
 export const savePhoto = (photo) => async (dispatch) => {
     const response = await profileAPI.savePhoto(photo);
     if (response.resultCode === 0)
-        dispatch(savePhotoSuccess(response.photos))
+        dispatch(savePhotoSuccess(response.data.photos))
 }

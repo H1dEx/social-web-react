@@ -8,32 +8,24 @@ import {withRouter} from "react-router-dom";
 import Preloader from "../../common/Preloader/Preloader";
 
 class ProfileContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            userId: this.props.match.params.userId
-        }
-    }
-    
-    componentDidMount() {
-        let userId = this.state.userId;
-        if (!userId) {
-            userId = this.props.id;
-        }
-        this.props.getProfile(userId);
-        this.props.getStatus(userId);
-    }
-    
-    componentDidUpdate(prevProps, prevState) {
-        if (this.state.userId === this.props.match.params.userId) return
-        this.setState({userId: this.props.match.params.userId})
-        this.props.clearProfile();
+    refreshProfile() {
         let userId = this.props.match.params.userId;
         if (!userId) {
             userId = this.props.id;
         }
         this.props.getProfile(userId);
         this.props.getStatus(userId);
+        
+    }
+    
+    componentDidMount() {
+        this.refreshProfile()
+    }
+    
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.userId === this.props.match.params.userId) return
+        this.props.clearProfile();
+        this.refreshProfile();
     }
     
     componentWillUnmount() {

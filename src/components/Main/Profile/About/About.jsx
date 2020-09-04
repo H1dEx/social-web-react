@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from "./About.module.css";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks.jsx";
+import catPhoto from '../../../../assets/cat.jpg'
 
 const About = (props) => {
     let profile = props.profile;
@@ -26,14 +27,19 @@ const About = (props) => {
             <div className={styles.avatar}>
                 {(!profile.photos)
                     ? <img src={require('./cat.jpg')} alt="no logo"/>
-                    : <img src={profile.photos.large} alt="profile logo"/>
+                    : <img src={profile.photos.large || catPhoto} alt="profile logo"/>
                 }
-                {(props.isOwner) ? <input type="file" className={styles.file} onChange={selectFileHandler}/> : ''}
+                {(props.isOwner)
+                    ? (<label className={styles.label}> Update photo
+                        <input type="file" className={styles.file} onChange={selectFileHandler}/>
+                    </label>)
+                    : ''}
             </div>
             
             
             <div className={styles.info}>
                 <div className={styles.name}>{profile.fullName}</div>
+                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
                 
                 {isNull(profile.aboutMe, 'About me: ')}
                 
@@ -58,9 +64,10 @@ const About = (props) => {
                 <br/>
                 <div>
                     Contacts:
+                    {Object.entries(profile.contacts).map(([key, value]) => <div
+                        className={styles.contactItem}>{key}: {value}</div>)}
                 </div>
             </div>
-            <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
         </div>
     )
 };

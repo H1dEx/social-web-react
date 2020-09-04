@@ -1,20 +1,65 @@
 .wrapper {
-    margin-top: 15px;
+    padding: 20px 20px 0;
     display: flex;
     font-size: 20px;
 }
 
-.avatar img{
+.avatar {
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar img {
     width: 150px;
     height: 150px;
+    margin-bottom: 10px;
 }
 
 .info {
-    display: block;
+    width: 100%;
     margin-left: 40px;
 }
 
 .name {
     font-weight: bold;
     font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.label {
+    font-size: 0.9em;
+    display: inline-block;
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 0.2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-weight: 400;
+    background-color: #CCCCCC;
+    color: #000000;
+    box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17), inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15), inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+    text-align: center;
+    position: relative;
+}
+
+.label:active {
+    box-shadow: inset 0 0.6em 2em -0.3em rgba(0, 0, 0, 0.15), inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+}
+
+.label:hover {
+    border: 1px solid #7a7a7a;
+    margin: -1px
+}
+
+.contactItem {
+    padding: 3px 0
 }

@@ -80,16 +80,13 @@ const ProfileInfo = ({profile, contactsArr, status, updateStatus, isOwner, goToE
         <div>
             Looking for a job? - {(profile.lookingForAJob) ? "Yes" : 'No'}
         </div>
-        <br/>
-        
         {profile.lookingForAJob
         &&
         <div>
-            <p>My professional skills:</p>
-            {profile.lookingForAJobDescription}
+            <p>{'My professional skills: '}
+            {profile.lookingForAJobDescription}</p>
         </div>
         }
-        <br/>
         <ul className={styles.about}>
             {contactsArr.map(el => <span key={Math.floor(Math.random() * 929)}>{el}</span>)}
         </ul>

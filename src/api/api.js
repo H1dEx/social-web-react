@@ -71,5 +71,9 @@ export const profileAPI = {
         }).then(result => {
             return result.data
         })
+    },
+    async saveProfile(profile) {
+        const response = await instance.put('/profile', profile);
+        return response.data
     }
 };

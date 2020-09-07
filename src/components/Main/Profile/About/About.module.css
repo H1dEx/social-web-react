@@ -23,7 +23,6 @@
 .name {
     font-weight: bold;
     font-size: 26px;
-    margin-bottom: 10px;
 }
 
 .file {
@@ -62,4 +61,24 @@
 
 .contactItem {
     padding: 3px 0
+}
+
+.nameWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.edit {
+    font-size: 15px;
+    background-color: white;
+    padding: 3px 10px;
+    border-radius: 5px;
+    border-width: 1px;
+    cursor: pointer;
+    transition: 0.4s all;
+}
+
+.edit:hover {
+    background-color: #eae5e5;
 }

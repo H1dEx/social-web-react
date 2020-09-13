@@ -1,5 +1,5 @@
 import profileReducer from "./profileReducer";
-import messagesReducer from "./messagesReducer";
+import messagesReducer from "./messagesReducer.ts";
 
 let store = {
   _state: {

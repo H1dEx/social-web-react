@@ -1,5 +1,5 @@
 import React from "react";
-import {sendMessageActionCreator} from "../../../redux/messagesReducer";
+import {sendMessageActionCreator} from "../../../redux/messagesReducer.ts";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../../hoc/AuthRedirect";

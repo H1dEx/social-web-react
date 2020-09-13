@@ -6,7 +6,7 @@ import {Provider} from "react-redux";
 import store from "./redux/reduxStore";
 import {BrowserRouter} from "react-router-dom";
 
-const App = (props) => {
+const App = props => {
     return (
         <div>
             <HeaderContainer/>

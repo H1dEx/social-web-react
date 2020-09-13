@@ -11,7 +11,7 @@ import UsersContainer from "./Users/UsersContainer";
 import Login from "./Login/Login";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import {initializeApp} from "../../redux/appReducer";
+import {initializeApp} from "../../redux/appReducer.ts";
 import Preloader from "../common/Preloader/Preloader";
 
 class Main extends React.Component {

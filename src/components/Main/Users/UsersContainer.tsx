@@ -16,30 +16,36 @@ import {
 import {UserType} from "../../../types/types";
 import {AppStateType} from "../../../redux/reduxStore";
 
-type PropsType = {
+type MapStatePropsType = {
     isFetching: boolean
     followingInProgress: Array<number>
     currentPage: number
     pageSize: number
     totalUsersCount: number
     users: Array<UserType>
-    followThunk: Function
-    unfollow: Function
-    requestUsers: (pageSize: number, pageNumber: number)=>void
-    setCurrentPage: (pageNumber: number) => void
-
 }
+
+type MapDispatchPropsType = {
+    followThunk: (userId: number) => void
+    unfollow: (userId: number) => void
+    requestUsers: (pageSize: number, pageNumber: number) => void
+    setCurrentPage: (pageNumber: number) => void
+}
+
+type OwnPropsType = {}
+
+type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType
 
 class UsersContainer extends Component<PropsType> {
     componentDidMount() {
         this.props.requestUsers(this.props.pageSize, this.props.currentPage);
     };
-    
+
     onPageChange = (p: number) => {
         this.props.setCurrentPage(p);
         this.props.requestUsers(this.props.pageSize, p);
     };
-    
+
     render() {
         return (
             <> {this.props.isFetching ? <Preloader/> : null}
@@ -67,7 +73,7 @@ let mapStateToProps = (state: AppStateType) => {
     }
 };
 
-export default compose(connect(mapStateToProps, {
+export default compose(connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(mapStateToProps, {
     followThunk,
     unfollow,
     setCurrentPage,

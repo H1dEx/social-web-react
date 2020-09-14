@@ -22,7 +22,7 @@ let initialState = {
 
 export type initialStateType = typeof initialState;
 
-const authReducer = (state = initialState, action): initialStateType => {
+const authReducer = (state = initialState, action: any): initialStateType => {
     switch (action.type) {
         case SET_USER_DATA:
             return {
@@ -42,10 +42,10 @@ const authReducer = (state = initialState, action): initialStateType => {
 export default authReducer;
 
 type setAuthUserDataActionPayloadType = {
-    id: number
-    email: string
-    login: string
-    isAuth: boolean
+    id: number | null
+    email: string | null
+    login: string | null
+    isAuth: boolean | null
 }
 
 type setUserDataActionType = {
@@ -68,7 +68,7 @@ export const setCaptchaURLSuccess = (captchaURL: string): getCaptchaURLSuccessAc
     captchaURL
 });
 
-export const authorize = () => async (dispatch) => {
+export const authorize = () => async (dispatch: any) => {
     const response = await authAPI.me();
     if (response.resultCode === 0) {
         let {id, login, email} = response.data;
@@ -89,13 +89,13 @@ export const login = ({email, password, rememberMe, captcha}: { email: string, p
 }
 
 
-export const getCaptchaURL = () => async dispatch => {
+export const getCaptchaURL = () => async (dispatch: any) => {
     const response = await secureAPI.getCaptchaURL();
     const captchaURL = response.url;
     dispatch(setCaptchaURLSuccess(captchaURL))
 }
 
-export const logout = () => async dispatch => {
+export const logout = () => async (dispatch: any) => {
     const response = await authAPI.logout();
     if (response.resultCode === 0) {
         dispatch(dispatch(setUserData(null, null, null, false)))

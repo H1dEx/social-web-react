@@ -1,29 +1,42 @@
-import React from "react";
-import style from './FormControls.module.css';
-import {Field} from "redux-form";
+import React from "react"
+import style from './FormControls.module.css'
+import {Field, WrappedFieldMetaProps, WrappedFieldProps} from "redux-form"
+import {FieldValidatorType} from "../../../helpers/validators/validators"
 
-const FormControl = ({input, meta: {touched, error}, children, ...props}) => {
-    const hasError = touched && error;
+type FormControlsPropsType = {
+    meta: WrappedFieldMetaProps
+}
+
+
+const FormControl: React.FC<FormControlsPropsType> = (
+    {
+        meta,
+        children,
+        ...props
+    }
+) => {
+    const hasError = meta.touched && meta.error;
     return (
         <div className={style.formControl + " " + (hasError ? style.error : "")}>
             <div>
                 {children}
             </div>
-            {hasError && <span>{error}</span>}
+            {hasError && <span>{meta.error}</span>}
         </div>
     )
 }
 
-export const Textarea = (props) => {
-    const {input, meta, child, ...restProps} = props;
+export const Textarea: React.FC<WrappedFieldProps> = (props) => {
+    const {input, meta, ...restProps} = props;
     return (
         <FormControl {...props}>
             <textarea {...input} {...restProps}/>
         </FormControl>
     )
 }
-export const Input = (props) => {
-    const {input, meta, child, ...restProps} = props;
+
+export const Input: React.FC<WrappedFieldProps> = (props) => {
+    const {input, ...restProps} = props;
     return (
         <FormControl {...props}>
             <input {...input} {...restProps}/>
@@ -31,9 +44,17 @@ export const Input = (props) => {
     )
 }
 
-export const createField = (name, validators, component, clName, props) => (
+export const createField = (
+    name: string,
+    validators: Array<FieldValidatorType>,
+    component: string | React.FC<WrappedFieldProps>,
+    clName: string,
+    props = {}
+) => (
     <Field component={component}
            name={name}
            validate={[...validators]}
-           className={clName} {...props}/>)
+           className={clName} {...props}
+    />
+)
 

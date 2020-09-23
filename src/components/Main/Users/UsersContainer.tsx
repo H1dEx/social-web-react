@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {requestUsers, setCurrentPage, unfollow, followThunk} from "../../../redux/usersReducer";
+import {actions, requestUsers, unfollow, followThunk} from "../../../redux/usersReducer";
 import Users from "./Users";
 import Preloader from "../../common/Preloader/Preloader";
 import {withAuthRedirect} from "../../../hoc/AuthRedirect";
@@ -15,6 +15,8 @@ import {
 } from "../../../redux/usersSelectors";
 import {UserType} from "../../../types/types";
 import {AppStateType} from "../../../redux/reduxStore";
+
+const {setCurrentPage} = actions;
 
 type MapStatePropsType = {
     isFetching: boolean

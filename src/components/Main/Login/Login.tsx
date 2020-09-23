@@ -18,12 +18,14 @@ type MapDispatchPropsType = {
     login: ({email, password, rememberMe, captcha}: { email: string, password: string, rememberMe: boolean, captcha: string }) => void
 }
 
-type LoginFormsValuesType = {
+export type LoginFormsValuesType = {
     email: string
     password: string
     rememberMe: boolean
     captcha: string
 }
+
+type LoginFormValuesTypeKeys = Extract<keyof LoginFormsValuesType, string>
 
 type LoginFormOwnProps = {
     captchaURL: string | null
@@ -48,13 +50,11 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormsValuesType, LoginFormOwnPr
             <h1 className={s.h1}>LOGIN</h1>
             <div className={style.login_block}>
                 <span className={style.input_span}>Email</span>
-                {createField("email", [required], Input, style.input, {})}
-                {/*<Field component={Input} name="email" validate={[required]} className={style.input}/>*/}
+                {createField<LoginFormValuesTypeKeys>("email", [required], Input, style.input, {})}
             </div>
             <div className={style.password_block}>
                 <span className={style.input_span}>Password</span>
-                {createField("password", [required], Input, style.input, {type: "password"})}
-                {/*<Field className={style.input} type="password" component={Input} name="password" validate={[required]}/>*/}
+                {createField<LoginFormValuesTypeKeys>("password", [required], Input, style.input, {type: "password"})}
             </div>
             <div className={style.check_block}>
                 <Field type="checkbox"
@@ -66,7 +66,7 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormsValuesType, LoginFormOwnPr
             </div>
 
             {captchaURL && <img src={captchaURL} alt="captcha"/>}
-            {captchaURL && createField("captcha", [required], Input, style.input, {})}
+            {captchaURL && createField<LoginFormValuesTypeKeys>("captcha", [required], Input, style.input, {})}
 
             {error && <div className={style.formSummaryError}>{error}</div>}
             <div className={style.button_block}>

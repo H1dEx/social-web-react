@@ -10,60 +10,60 @@ const TOGGLE_IS_FETCHING = "usersPage/TOGGLE_IS_FETCHING";
 const TOGGLE_IS_FOLLOWING_PROGRESS = "usersPage/TOGGLE_IS_FOLLOWING_PROGRESS";
 
 const followUnfollowFlow = async (dispatch, id, apiMethod, actionCreator) => {
-    dispatch(toggleIsFollowingProgress(true, id));
-    const response = await apiMethod(id);
-    dispatch(toggleIsFollowingProgress(false, id));
-    if (response.resultCode === 0) await dispatch(actionCreator(id));
+	dispatch(toggleIsFollowingProgress(true, id));
+	const response = await apiMethod(id);
+	dispatch(toggleIsFollowingProgress(false, id));
+	if (response.resultCode === 0) await dispatch(actionCreator(id));
 }
 
 let initialState = {
-    users: [],
-    pageSize: 50,
-    totalCount: 0,
-    currentPage: 1,
-    isFetching: false,
-    followingInProgress: []
+	users: [],
+	pageSize: 50,
+	totalCount: 0,
+	currentPage: 1,
+	isFetching: false,
+	followingInProgress: []
 };
 
 const usersReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case FOLLOW:
-            return {
-                ...state,
-                users: updateObjectInArray(state.users, action.userId, "id", {followed: true}),
-            };
-        case UNFOLLOW:
-            return {
-                ...state,
-                users: updateObjectInArray(state.users, action.userId, "id", {followed: false}),
-            };
-        case SET_USERS:
-            return {
-                ...state, users: [...action.users]
-            };
-        case SET_CURRENT_PAGE:
-            return {
-                ...state,
-                currentPage: action.currentPage
-            };
-        case SET_TOTAL_COUNT:
-            return {
-                ...state,
-                totalCount: action.totalCount
-            };
-        case TOGGLE_IS_FETCHING:
-            return {
-                ...state,
-                isFetching: action.isFetching
-            };
-        case TOGGLE_IS_FOLLOWING_PROGRESS:
-            return {
-                ...state,
-                followingInProgress: (action.isFetching) ? [...state.followingInProgress, action.id] : state.followingInProgress.filter(id => id != action.id)
-            };
-        default:
-            return state;
-    }
+	switch (action.type) {
+		case FOLLOW:
+			return {
+				...state,
+				users: updateObjectInArray(state.users, action.userId, "id", {followed: true}),
+			};
+		case UNFOLLOW:
+			return {
+				...state,
+				users: updateObjectInArray(state.users, action.userId, "id", {followed: false}),
+			};
+		case SET_USERS:
+			return {
+				...state, users: [...action.users]
+			};
+		case SET_CURRENT_PAGE:
+			return {
+				...state,
+				currentPage: action.currentPage
+			};
+		case SET_TOTAL_COUNT:
+			return {
+				...state,
+				totalCount: action.totalCount
+			};
+		case TOGGLE_IS_FETCHING:
+			return {
+				...state,
+				isFetching: action.isFetching
+			};
+		case TOGGLE_IS_FOLLOWING_PROGRESS:
+			return {
+				...state,
+				followingInProgress: (action.isFetching) ? [...state.followingInProgress, action.id] : state.followingInProgress.filter(id => id != action.id)
+			};
+		default:
+			return state;
+	}
 };
 
 export default usersReducer;
@@ -76,11 +76,11 @@ export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFe
 export const toggleIsFollowingProgress = (isFetching, id) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, id});
 
 export const requestUsers = (pageSize, currentPage) => async (dispatch) => {
-    dispatch(toggleIsFetching(true));
-    const response = await usersAPI.getUsers(pageSize, currentPage);
-    dispatch(toggleIsFetching(false));
-    dispatch(setUsers(response.items));
-    dispatch(setTotalCount(response.totalCount));
+	dispatch(toggleIsFetching(true));
+	const response = await usersAPI.getUsers(pageSize, currentPage);
+	dispatch(toggleIsFetching(false));
+	dispatch(setUsers(response.items));
+	dispatch(setTotalCount(response.totalCount));
 };
 
 export const unfollow = (id) => async (dispatch) => await followUnfollowFlow(dispatch, id, followAPI.unfollow.bind(followAPI), acceptUnfollow)

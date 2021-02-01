@@ -1,52 +1,53 @@
 import React from 'react';
 import styles from './Info.module.css';
 import Preloader from "../../../../common/Preloader/Preloader";
-import ProfileStatus from'./ProfileStatus'
+import ProfileStatus from './ProfileStatus'
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
-    if (!props.profile) return (<Preloader/>);
-    let profile = props.profile;
+  if (!props.profile) return (<Preloader/>);
+  let profile = props.profile;
 
-    const isNull = (param, result) => {
-        return (param === null) ? null : <div>{result + param}</div>
-    };
+  const isNull = (param, result) => {
+    return (param === null) ? null : <div>{result + param}</div>
+  };
 
-    let contactsArr = [];
+  let contactsArr = [];
 
-    for (let key in profile.contacts) {
-        if (profile.contacts[key] !== null && profile.contacts[key] !== '') {
-            contactsArr.push(<div>{key + ': ' + profile.contacts[key]}</div>)
-        }
+  for (let key in profile.contacts) {
+    if (profile.contacts[key] !== null && profile.contacts[key] !== '') {
+      contactsArr.push(<div>{key + ': ' + profile.contacts[key]}</div>)
     }
-    return (
-        <div className={styles.wrapper}>
+  }
+  return (
+    <div className={styles.wrapper}>
 
-            <div className={styles.avatar}>
-                {(profile.photos.large == null)
-                    ? <img src={require('./cat.jpg')}/>
-                    : <img src={profile.photos.large}/>
-                }</div>
+      <div className={styles.avatar}>
+        {(profile.photos.large == null)
+          ? <img src={require('./cat.jpg')}/>
+          : <img src={profile.photos.large}/>
+        }</div>
+      {props.isOwner && (<input type="file"/>)}
 
-            <div className={styles.info}>
-                <div className={styles.name}>{profile.fullName}</div>
+      <div className={styles.info}>
+        <div className={styles.name}>{profile.fullName}</div>
 
-                {isNull(profile.aboutMe, 'About me: ')}
+        {isNull(profile.aboutMe, 'About me: ')}
 
-                <ul className={styles.about}>
-                    {contactsArr}
-                </ul>
+        <ul className={styles.about}>
+          {contactsArr}
+        </ul>
 
-                <hr/>
-                <div>
+        <hr/>
+        <div>
 
-                    Looking for a job? - {(profile.lookingForAJob) ? "Yes" : 'No'}</div>
+          Looking for a job? - {(profile.lookingForAJob) ? "Yes" : 'No'}</div>
 
-                {isNull(profile.lookingForAJobDescription, `Looking for a job description: `)}
-            </div>
-            <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
-        </div>
-    )
+        {isNull(profile.lookingForAJobDescription, `Looking for a job description: `)}
+      </div>
+      <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+    </div>
+  )
 };
 
 export default ProfileInfo;

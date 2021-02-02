@@ -4,6 +4,7 @@ const ADD_POST = "profilePage/ADD_POST";
 const SET_PROFILE = 'profilePage/SET_PROFILE';
 const SET_STATUS = 'profilePage/SET_STATUS';
 const DELETE_POST = 'profilePage/DELETE_POST';
+const SAVE_PHOTO_SUCCESS = 'profilePage/SAVE_PHOTO_SUCCESS'
 
 let initialState = {
     profile: null,
@@ -61,7 +62,9 @@ const profileReducer = (state = initialState, action) => {
         case SET_STATUS:
             return {...state, status: action.status};
         case DELETE_POST:
-            return {...state, postsData: state.postsData.filter(item => (item.id !== action.id))}
+            return {...state, postsData: state.postsData.filter(item => (item.id !== action.id))};
+        case SAVE_PHOTO_SUCCESS:
+            return {...state, profile: {...state.profile, photos: action.photos}}
         default:
             return state;
 
@@ -75,10 +78,14 @@ export const addPost = NewPostText => ({
     NewPostText
 });
 
-export const setProfile = profile => ({
-    type: SET_PROFILE,
-    profile
-});
+export const setProfile = profile => {
+    console.log(profile)
+
+    return ({
+        type: SET_PROFILE,
+        profile
+    });
+}
 
 export const setStatus = (status) => ({
     type: SET_STATUS,
@@ -88,6 +95,11 @@ export const setStatus = (status) => ({
 export const deletePost = id => ({
     type: DELETE_POST,
     id
+})
+
+export const savePhotoSuccess = photos => ({
+    type: SAVE_PHOTO_SUCCESS,
+    photos
 })
 
 export const getProfile = (userId) => async (dispatch) => {
@@ -105,3 +117,16 @@ export const updateStatus = (status) => async (dispatch) => {
     if (response.resultCode === 0)
         dispatch(setStatus(status));
 };
+
+export const savePhoto = photo => async dispatch => {
+    const response = await profileAPI.savePhoto(photo)
+
+    if (response.resultCode === 0)
+        dispatch(savePhotoSuccess(response.data.photos))
+}
+
+export const saveProfile = profile => async dispatch => {
+    const response = await profileAPI.saveProfile(profile)
+    if (response.resultCode === 0)
+        dispatch(setProfile(response))
+}

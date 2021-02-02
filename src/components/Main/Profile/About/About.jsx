@@ -6,7 +6,7 @@ const About = (props) => {
     return (
         <div>
             <Substrate/>
-            <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus} isOwner={props.isOwner}/>
+            <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus} isOwner={props.isOwner} savePhoto={props.savePhoto}/>
         </div>
     )
 };

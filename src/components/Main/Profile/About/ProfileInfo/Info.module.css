@@ -1,20 +1,27 @@
 .wrapper {
-    margin-top: 15px;
-    display: flex;
-    font-size: 20px;
+  margin-left: 10px;
+  padding: 10px 10px 0;
+  display: flex;
+  font-size: 20px;
+  background-color: #fff;
+  width: 100%;
 }
 
-.avatar img{
-    width: 150px;
-    height: 150px;
+.avatar {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar img {
+  width: 200px;
+  height: 200px;
 }
 
 .info {
-    display: block;
-    margin-left: 40px;
+  display: block;
 }
 
 .name {
-    font-weight: bold;
-    font-size: 26px;
+  font-weight: bold;
+  font-size: 26px;
 }
